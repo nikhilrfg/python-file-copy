@@ -60,6 +60,7 @@ try:
     # A return value of 0 indicates the end of the file.
 
     while readin > 0:
+        print("Bytes read:", readin)
 
         # Line 23:
         # Write the bytes read from the buffer to the destination file.
@@ -72,6 +73,7 @@ try:
         # Add the number of bytes written to the total counter.
 
         total += written
+        print("Total bytes written:", total)
 
         # Line 25:
         # Read the next chunk of data from the source file.
