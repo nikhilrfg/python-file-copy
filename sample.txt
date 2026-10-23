@@ -1,0 +1,3 @@
+Hello, this is my first Python file copy program.
+I am learning how to read and write binary files.
+This program uses a buffer to copy data.
