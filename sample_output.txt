@@ -1,0 +1,89 @@
+# Python File Copy Program - Sample Output
+
+## Test 1: Copy an Existing File
+
+Command:
+python file_copy.py
+
+Enter the source file name: sample.txt
+Enter the destination file name: sample_copy.txt
+45 byte(s) successfully written
+
+Expected Result:
+The program creates sample_copy.txt containing the same data as sample.txt.
+
+Verification:
+(Get-FileHash sample.txt).Hash -eq (Get-FileHash sample_copy.txt).Hash
+
+Expected Output:
+True
+
+---
+
+## Test 2: Source File Does Not Exist
+
+Command:
+python file_copy.py
+
+Enter the source file name: missing.txt
+Cannot open the source file: No such file or directory
+
+Expected Result:
+The program displays an error and exits without creating a destination file.
+
+---
+
+## Test 3: Copy an Empty File
+
+Command:
+python file_copy.py
+
+Enter the source file name: empty.txt
+Enter the destination file name: empty_copy.txt
+0 byte(s) successfully written
+
+Expected Result:
+The program creates an empty destination file.
+
+Verification:
+(Get-Item empty_copy.txt).Length
+
+Expected Output:
+0
+
+---
+
+## Test 4: Copy a Large File
+
+Command:
+python file_copy.py
+
+Enter the source file name: large.txt
+Enter the destination file name: large_copy.txt
+150000 byte(s) successfully written
+
+Expected Result:
+The program successfully copies the entire 150,000-byte file.
+
+Buffer Processing:
+First read: 65536 bytes
+Second read: 65536 bytes
+Third read: 18928 bytes
+Fourth read: 0 bytes (end of file)
+
+Verification:
+(Get-FileHash large.txt).Hash -eq (Get-FileHash large_copy.txt).Hash
+
+Expected Output:
+True
+
+---
+
+## Testing Summary
+
+Test 1: Existing file - Expected to pass
+Test 2: Missing file - Expected to pass
+Test 3: Empty file - Expected to pass
+Test 4: Large file - Expected to pass
+
+Note: These are sample expected results. The actual byte count for Test 1 depends on the contents of sample.txt. The buffer processing details for Test 4 are explanatory and are not printed unless debugging statements are added.
